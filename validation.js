@@ -147,12 +147,11 @@ function validateConfirmPassword() {
 
 confirmPassword.addEventListener('input', validateConfirmPassword);
 
+const formdiv = document.querySelector(".form");
 const createAccountError = document.getElementById('createAccountError');
 
 /* Form Submit Validation */
 form.addEventListener('submit', (e) => {
-    
-    createAccountError.textContent = "";
     
     // Run all validations
     const isFirstNameValid = validateFirstName();
@@ -165,8 +164,12 @@ form.addEventListener('submit', (e) => {
     const isFormValid = isFirstNameValid && isSecondNameValid && isEmailValid &&
                         isPhoneValid && isPasswordValid && isConfirmPasswordValid;
 
+    formdiv.style.borderColor = "var(--terminal-green-dim)";
+
     if (!isFormValid) {
         e.preventDefault(); // Prevent submission if any field fails
         createAccountError.textContent = "INVALID DETAILS";
+        formdiv.style.borderColor = "var(--terminal-red-dim)";
+        
     }
 });
