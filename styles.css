@@ -1,0 +1,209 @@
+/* Varaibles */
+
+:root {
+    /* Base terminal palette */
+    --black: #0a0a0a;          /* not pure black, slight warmth for depth */
+    --dark-grey: #1a1a1a;      /* darkest grey for panels or form background */
+    --mid-grey: #2b2b2b;       /* medium grey for borders, dividers */
+    --light-grey: #3d3d3d;     /* lightest grey for subtle highlights */
+
+    /* Terminal green tones */
+    --terminal-green: #00ff66; /* main bright CRT green */
+    --terminal-green-dim: #00cc55; /* slightly dimmer variant for hover or secondary text */
+    --terminal-green-glow: #00ff66cc; /* semi-transparent glow version */
+
+    --terminal-red-dim: #cc4444;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+/* Basic reset */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    color: var(--terminal-green-dim);
+    text-shadow:
+    1px 1px 0 var(--black),
+    2px 2px 0 var(--mid-grey);
+}
+
+/* Main form container */
+.form {
+    background-color: var(--dark-grey);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 500px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 30px;
+}
+
+/* Header section */
+.header {
+    width: 100%; /* ✅ makes it fill the .form horizontally */
+    box-sizing: border-box; /* ensures padding/border stay inside width */
+}
+
+/* Form content */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Legend */
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+    align-self: flex-start;
+}
+
+/* Input groups (side by side layout) */
+.input {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 15px;
+    gap: 10px;
+}
+
+/* Field containers (stack label over input) */
+.field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Labels and inputs */
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--dark-grey);
+    border: none;
+    color: var(--terminal-green-dim);
+    border: 1px solid var(--dark-grey);
+}
+
+input:hover {
+    background-color: var(--mid-grey); /* barely lighter for contrast */
+    border: 1px solid var(--terminal-green-dim); /* faint green edge */
+    transition: background-color 0.2s ease, border 0.2s ease;
+}
+
+input::placeholder {
+    color: var(--terminal-green-dim);
+    transition: color 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+
+    background-color: var(--mid-grey); /* barely lighter for contrast */
+    border: 1px solid var(--terminal-green-dim); /* faint green edge */
+    transition: background-color 0.2s ease, border 0.2s ease;
+    
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+input:valid:not(:placeholder-shown) {
+    background-color: var(--dark-grey); /* barely lighter for contrast */
+    border: 1px solid var(--terminal-green-dim); /* faint green edge */
+}
+
+/* Only turn red if input is invalid AND user has typed something */
+input:invalid:not(:placeholder-shown) {
+    color: var(--terminal-red-dim);
+    border: 1px solid var(--terminal-red-dim);
+}
+
+/* Sorts out password invalid issue */
+
+/* Terminal-style invalid field */
+input[data-invalid="true"] {
+    color: var(--terminal-red-dim);
+    border: 1px solid var(--terminal-red-dim);
+}
+
+/* Optional: reset when valid */
+input[data-invalid="false"] {
+    color: var(--terminal-green-dim);
+    border: 1px solid var(--dark-grey);
+}
+
+
+/* Stops apple from ruining my design with their autocomplete styling */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--dark-grey) inset !important; /* repaint background */
+    -webkit-text-fill-color: var(--terminal-green-dim) !important; /* set text color */
+    caret-color: var(--terminal-green-dim); /* matches your cursor color */
+    transition: background-color 0s ease-in-out 9999s; /* prevent flash of white */
+}
+
+
+/* Button styling */
+button {
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    color: var(--dark-grey);
+    background-color: var(--terminal-green-dim);
+    border: none;
+}
+
+button:hover {
+    background-color: var(--terminal-green);
+    color: var(--black);
+    
+    transform: translateY(-1px); /* gives a tiny “lift” effect */
+    transition: all 0.15s ease-in-out;
+}
+
+/* Footer text */
+p.login {
+    margin-top: 15px;
+    text-align: left;
+    align-self: flex-start;
+}
+
+p > a {
+    text-decoration: underline;
+}
+
+p > a:hover {
+    color: var(--terminal-green);
+}
+
+p >:hover:visited {
+    color: var(--terminal-green);
+}
+
+/* Error message */
+
+.error-message {
+    color: var(--terminal-red-dim);
+    font-size: 0.6rem;
+    margin-top: 4px;
+    display: block;
+    text-align: center;
+}

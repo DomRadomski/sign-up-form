@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="validation.js" defer></script>
+</head>
+
+<body>
+    <div class="form">
+        <div class="header">
+            <p><p>THIS IS NOT A REAL ONLINE SERVICE! YOU KNOW YOU NEED SOMETHING LIKE THIS IN YOUR LIFE TO HELP YOU REALIZE YOUR DEEPEST DREAMS.</p>
+</p>
+            <p>SIGN UP NOW TO GET STARTED:</p>
+        </div>
+
+        <form id="signupForm" novalidate> 
+            <div class="input">
+                <div class="field">
+                    <input type="text" id="firstname" name="first" placeholder="NAME" minlength="3" maxlength="12" required pattern="[A-Za-z]+">
+                    <span class="error-message" id="firstnameError"></span>
+                </div>
+
+                <div class="field">
+                    <input type="text" id="secondname" name="secondname" placeholder="SURNAME" minlength="3" maxlength="12" required pattern="[A-Za-z]+">
+                    <span class="error-message" id="secondnameError"></span>
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="field">
+                    <input type="email" id="email" placeholder="EMAIL" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="field">
+                    <input type="tel" id="phone" placeholder="PHONE NUMBER" required pattern="[0-9]{11}" maxlength="11">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="field">
+                    <input type="password" id="password" placeholder="PASSWORD" required>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <div class="field">
+                    <input type="password" id="confirmPassword" placeholder="CONFIRM PASSWORD" required>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+            </div>
+
+            <button type="submit">CREATE ACCOUNT</button>
+            <span class="error-message" id="createAccountError"></span>
+
+            <p class="login">ALREADY HAVE AN ACCOUNT? <a>LOG IN</a></p>
+        </form>
+        
+    </div>
+</body>
+</html>
